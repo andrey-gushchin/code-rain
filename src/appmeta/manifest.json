@@ -1,0 +1,9 @@
+{
+  "format_version": 1,
+  "id": "app.andrey-gushchin.code_rain",
+  "name": "Code Rain",
+  "version": "0.1.0",
+  "api_version": "27.14.0",
+  "description": "Matrix-style digital rain for your BUSY Bar, with falling green characters and fading trails.",
+  "author": "andrey-gushchin"
+}
