@@ -10,6 +10,9 @@ const COLUMN_PITCH = 5;
 const ROW_PITCH = 7;
 const COLUMNS = 14;
 const FRAME_MS = 80;
+const MIN_SPEED = 0.5;
+const MAX_SPEED = 2;
+const SPEED_STEP = 0.25;
 
 // Normal katakana orientation. The renderer reads the row from right to left.
 const GLYPHS = [
@@ -110,11 +113,12 @@ function drawStream(stream: Stream): void {
   }
 }
 
-function renderFrame(elapsed: number): string {
+function renderFrame(elapsed: number, speedMultiplier: number): string {
   pixels.fill(".");
+  const movementSeconds = elapsed * speedMultiplier / 1000;
   for (let column = 0; column < COLUMNS; column += 1) {
     let stream = streams[column];
-    stream.y += stream.speed * elapsed / 1000;
+    stream.y += stream.speed * movementSeconds;
     if (stream.y - (stream.glyphs.length - 1) * ROW_PITCH >= HEIGHT) {
       stream = makeStream(column);
       streams[column] = stream;
@@ -150,6 +154,7 @@ function main(): void {
   };
 
   let previousFrame = Date.now();
+  let speedMultiplier = 1;
   let timer: ReturnType<typeof setTimeout> | undefined;
   let stopped = false;
   let failed = false;
@@ -162,7 +167,7 @@ function main(): void {
     const now = Date.now();
     const elapsed = Math.min(250, Math.max(0, now - previousFrame));
     previousFrame = now;
-    const frame = renderFrame(elapsed);
+    const frame = renderFrame(elapsed, speedMultiplier);
 
     try {
       if (failed || frame !== bitmap.data) {
@@ -187,7 +192,20 @@ function main(): void {
   }
 
   const unbind = listen("input", (event) => {
-    if (stopped || event.key !== "back" || event.action !== "short") return;
+    if (stopped) return;
+
+    if (event.key === "encoder") {
+      const nextSpeed = speedMultiplier + event.delta * SPEED_STEP;
+      speedMultiplier = Math.max(MIN_SPEED, Math.min(MAX_SPEED, nextSpeed));
+      return;
+    }
+
+    if (event.action !== "short") return;
+    if (event.key === "ok") {
+      speedMultiplier = speedMultiplier === MAX_SPEED ? MIN_SPEED : speedMultiplier + SPEED_STEP;
+      return;
+    }
+    if (event.key !== "back") return;
 
     stopped = true;
     if (timer !== undefined) clearTimeout(timer);

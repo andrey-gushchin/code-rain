@@ -2,7 +2,7 @@
   "name": "code-rain",
   "private": true,
   "version": "0.1.0",
-  "description": "Code Rain",
+  "description": "Matrix-style digital rain with fading green trails and wheel-controlled speed.",
   "author": "andrey-gushchin",
   "type": "module",
   "scripts": {
