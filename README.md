@@ -2,6 +2,8 @@
 
 Code Rain turns the 72×16 front display into an ambient animation. Fourteen streams of mirrored 4×6 katakana fall at staggered speeds, with bright green heads and fading trails.
 
+![Green digital rain on the BUSY Bar front display](screenshots/front-1@8x.png)
+
 Open **Code Rain** from the Apps menu to start. Press **Back** to exit. The animation works offline.
 
 ## BUSY Bar Emulator
