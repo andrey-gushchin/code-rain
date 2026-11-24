@@ -1,13 +1,13 @@
 # AGENTS.md
 
-Instructions for AI coding agents working on `Code Rain` (`app.andrey-gushchin.code_rain`), a JavaScript application for the BUSY Bar. See [README.md](./README.md) for the full build, packaging and manifest reference.
+Instructions for AI coding agents working on `Code Rain` (`app.andrey-gushchin.code_rain`), a JavaScript application for the BUSY Bar.
 
 The app runs on the bar itself, in the firmware's embedded [JerryScript](https://compat-table.github.io/compat-table/es2016plus/#jerryscript3_0_0) runtime. It is not Node.js and not a browser.
 
 <!-- busy-emulator:begin -->
 ## No BUSY Bar needed: this project runs on BUSY Bar Emulator
 
-BUSY Bar Emulator created this project. It runs the BUSY Bar's firmware on this computer and has its own Node, npm and busy-cli, so use its command line for everything: do not run `npm`, `npx`, `node` or `tsc` yourself, and do not look for a BUSY Bar on USB. Where the rest of this file or `README.md` says `npm run ...`, use the command below.
+BUSY Bar Emulator created this project. It runs the BUSY Bar's firmware on this computer and has its own Node, npm and busy-cli, so use its command line for everything: do not run `npm`, `npx`, `node` or `tsc` yourself, and do not look for a BUSY Bar on USB.
 
 `busy-emulator` below is the command line's full path: `~/.busy-emulator/bin/busy-emulator` on macOS. On Windows it is `%LOCALAPPDATA%\busy-emulator\bin\busy-emulator.exe`, called in PowerShell as `& "$env:LOCALAPPDATA\busy-emulator\bin\busy-emulator.exe"`, in Git Bash as `"$LOCALAPPDATA/busy-emulator/bin/busy-emulator.exe"`, in cmd as `"%LOCALAPPDATA%\busy-emulator\bin\busy-emulator.exe"`. A person's own busy-cli works against the emulator too (`--addr` with the address `busy-emulator status` prints). Run each command on its own, not joined with others. Every command takes `--json`; a failure has a `code`, a `message` and a `hint` that names the next command. None of this needs a question to the person: build, run, look at the screen, fix.
 

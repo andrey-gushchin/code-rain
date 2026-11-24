@@ -1,6 +1,10 @@
 {
   "category": "art",
-  "short_description": "Matrix-style digital rain for your BUSY Bar, with falling green characters and fading trails.",
-  "description": "Code Rain brings the digital rain from *The Matrix* to your BUSY Bar’s 72×16 front display. Fourteen streams of mirrored katakana fall at different speeds, with bright green characters leading trails that fade into black.\n\nOpen **Code Rain** from the Apps menu and the animation starts right away. It runs offline. Press **Back** to exit.",
-  "changelog": ""
+  "short_description": "Matrix-style digital rain with fading green trails and wheel-controlled speed.",
+  "description": "Code Rain brings Matrix-style digital rain to the BUSY Bar’s 72×16 front display. Fourteen streams of mirrored katakana fall at staggered speeds, with bright green heads and fading trails.\n\nOpen **Code Rain** from the Apps menu to start at 1× speed. Turn the wheel clockwise to speed up or counterclockwise to slow down, from 0.5× to 2× in 0.25× steps. A short press of the wheel advances one step and wraps from 2× to 0.5×. Press **Back** to exit. Code Rain runs offline.",
+  "changelog": "First release of Code Rain, with wheel controls for rain speed.",
+  "screenshots": [
+    "screenshots/front-1.png"
+  ],
+  "back_screenshots": []
 }
